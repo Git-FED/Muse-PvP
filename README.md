@@ -1,5 +1,7 @@
 # Muse PVP
 
+<img width="2560" height="1440" alt="musemon_new_gym_challenge" src="https://github.com/user-attachments/assets/75e73eba-b112-4c04-a0aa-e6d1eb01e9c0" />
+
 Muse PVP is a relay-themed, turn-based PvP-style arena prototype. The included browser demo is a local, no-login practice loop against an AI opponent. The Python modules describe the modular game architecture for future live rooms.
 
 ## Run the browser demo
