@@ -1,50 +1,31 @@
-# Dual-Muse desktop wrapper and Android launcher
+# Muse PVP
 
-This package includes an unofficial Android Muse launcher and a Dual-Muse Electron desktop wrapper. The desktop app opens **two completely separate Muse browser instances side by side** in one split-screen window using two native Electron webviews.
+Muse PVP is a relay-themed, turn-based PvP-style arena prototype. The included browser demo is a local, no-login practice loop against an AI opponent. The Python modules describe the modular game architecture for future live rooms.
 
-Each side uses its own persistent Electron session partition:
+## Run the browser demo
 
-- Left browser: `persist:dual-muse-left`
-- Right browser: `persist:dual-muse-right`
-
-That means each side has independent cookies, local storage, cache, service workers, and login state. You can sign into different Muse accounts—or keep two independent Muse sessions—at the same time.
-
-Both desktop instances open `https://muse.ai/`. Normal HTTP(S) navigation stays inside each isolated pane; explicit external links open in the system browser.
-
-The Android project is under `dual-muse-apk/`. It opens `https://muse.ai/` in an Android WebView and keeps all HTTP(S) redirects—including authentication and account redirects—inside the app. Only mail and telephone links use external system handlers.
-
-## Run the desktop app locally
+Open `lobby/index.html` directly in a browser, or serve the repository with any static file server:
 
 ```bash
-cd dual-muse-desktop
-npm ci
-npm start
+python3 -m http.server 8080
+# then open http://localhost:8080/lobby/index.html
 ```
 
-## Build Windows installers
+## Gameplay
 
-```bash
-cd dual-muse-desktop
-npm ci
-npm run dist
-```
+1. Browse the local relay lobby or enter Practice Mode.
+2. Pick a character with a distinct combat passive.
+3. Choose Attack, Guard, or Charge before the timer expires.
+4. Read the relay log and adapt when a glitch changes the rules.
+5. Win to earn EXP and rematch from the results screen.
 
-The build produces NSIS installer and portable Windows artifacts under `dual-muse-desktop/dist/`.
+## Tree
 
-## Build the Android APK
-
-```bash
-cd dual-muse-apk
-bash scripts/build.sh
-```
-
-## Branding assets
-
-The desktop app includes:
-
-- `dual-muse-desktop/assets/icon.png` — Linux/runtime icon
-- `dual-muse-desktop/assets/icon.ico` — Windows installer and shortcut icon
-- `dual-muse-desktop/assets/favicon.png` — favicon-sized web asset
-- `dual-muse-desktop/assets/favicon.ico` — browser favicon
-
-This is an unofficial wrapper and is not affiliated with muse.ai.
+- `ai/trainer.py` — practice-battle AI decision logic.
+- `characters/` — character format and example loadouts.
+- `game/` — deterministic battle rules, timer, glitches, and EXP.
+- `lobby/index.html` — self-contained browser client and local lobby.
+- `moves/` — approved move definitions and community submissions.
+- `relay/` — room management and protocol notes.
+- `client/` — platform packaging notes.
+- `audio/` — reserved music and SFX locations.
